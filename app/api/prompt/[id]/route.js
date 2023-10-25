@@ -20,7 +20,7 @@ export const GET = async (request, {params}) => {
 
 
 //PATCH(update)
-export const Patch = async (request, {params}) => {
+export const PATCH = async (request, {params}) => {
     const {prompt, tag} = await request.json();
 
     try {
@@ -30,7 +30,7 @@ export const Patch = async (request, {params}) => {
 
         if(!existingPrompt) return new Response("Prompt not found", {status: 404})
 
-        existingPrompt.promp = prompt;
+        existingPrompt.prompt = prompt;
         existingPrompt.tag = tag;
 
         await existingPrompt.save();
@@ -44,7 +44,7 @@ export const Patch = async (request, {params}) => {
 
 
 //DELETE(delete)
-export const Delete = async (request, {params}) => {
+export const DELETE = async (request, {params}) => {
     try {
         await connectToDB();
 
